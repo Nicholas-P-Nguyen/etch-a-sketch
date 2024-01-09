@@ -15,6 +15,15 @@ button {
     font-size: 24px;
 }
 
+.reset {
+    padding-left: 23px;
+    padding-right: 19px;
+}
+
+input {
+    align-content: center;
+}
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -29,6 +38,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .grid {

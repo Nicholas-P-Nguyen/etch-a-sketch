@@ -1,6 +1,12 @@
+// global variables 
 const DEFAULTSIZE = 16;
+const DEFAULTCOLOR = "black";
+// Keep track of current size and color 
+let currentSize = DEFAULTSIZE;
+let currentColor = DEFAULTCOLOR;
 
 // getting a reference to the nodes in the DOM 
+const color = document.querySelector('.selectColor');
 const grid = document.querySelector('.grid');
 const buttonSixteen = document.querySelector('.size-16');
 const buttonThirtyTwo = document.querySelector('.size-32');
@@ -9,27 +15,38 @@ const reset = document.querySelector('.reset');
 
 
 buttonSixteen.addEventListener('click', (event) => {
-    const size = parseInt(event.target.id);
-    reloadGrid(size);
+    currentSize = parseInt(event.target.id);
+    reloadGrid(currentSize);
 });
 
 buttonThirtyTwo.addEventListener('click', (event) => {
-    const size = parseInt(event.target.id);
-    reloadGrid(size);
+    currentSize = parseInt(event.target.id);
+    reloadGrid(currentSize);
 });
 
 buttonSixtyFour.addEventListener('click', (event) => {
-    const size = parseInt(event.target.id);
-    reloadGrid(size);
+    currentSize = parseInt(event.target.id);
+    reloadGrid(currentSize);
 });
 
 reset.addEventListener('click', resetGrid);
+
+color.addEventListener('input', (event) => {
+    currentColor = event.target.value;
+    setColor(currentColor);
+});
+
+// set color 
+function setColor(newColor)
+{
+    currentColor = newColor;
+}
 
 // resetting grid 
 function resetGrid()
 {
     clearGrid();
-    setGrid(DEFAULTSIZE);
+    setGrid(currentSize);
 }
 // reloading the grid
 function reloadGrid(size)
@@ -47,7 +64,7 @@ function clearGrid()
 // changing the color 
 function changeColor (event) 
 {
-    event.target.style.backgroundColor = 'black';
+    event.target.style.backgroundColor = currentColor;
 }
 
 // setting up the grid
